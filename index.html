@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Demo</title>
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+    <style type="text/css">
+    *{
+        margin:0;
+        padding: 0;
+    }
+    div,a,button,h1{
+        background: blue;
+        height: 50px;
+        line-height: 50px;
+        color: #fff;
+        text-align: center;
+        width: 200px;
+        margin: 5px;
+        border-radius: 5px;
+        font-size:14px ;
+        font-family: "微软雅黑","Arial Narrow"
+    }
+    a{
+        display: block;
+    }
+</style>
+</head>
+<body>
+
+    <div data-ripple="ripple">
+        div标签
+    </div>
+
+    <a data-ripple="ripple">
+        a标签
+    </a>
+
+    <button data-ripple="ripple">
+        button标签
+    </button>  
+
+    <h1 data-ripple="ripple">
+        h1标签
+    </h1>   
+
+</body>
+</html>
+<script src="ripple.js"></script>
+<script type="text/javascript">
+    new Ripple()
+</script>
