@@ -10,7 +10,7 @@
 在需要添加效果的元素上加上： data-ripple="ripple"
 
 调用
-```javascript
+```html
 <script type="text/javascript">
     new Ripple()
 </script>
