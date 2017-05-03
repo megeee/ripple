@@ -1,0 +1,26 @@
+{
+  "name": "Jeff.js",
+  "version": "1.0.0",
+  "description": "自用JS函数库",
+  "main": "Jeff.js",
+  "dependencies": {
+    "gulp": "^3.9.1"
+  },
+  "devDependencies": {
+    "gulp-rename": "^1.2.2",
+    "gulp-uglify": "^2.1.2"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+git@github.com:megeee/Jeff.js.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/megeee/Jeff.js/issues"
+  },
+  "homepage": "https://github.com/megeee/Jeff.js#readme"
+}
