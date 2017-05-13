@@ -11,7 +11,7 @@
                 bgColor : "#ffffff",  //水波纹颜色
                 cursor : true       //是否显示手型指针
             }
-
+            //扩展配置
             this.option = this.extend(option,config);
             //小于ie9版本不给运行
             if(!this.isltIE9())  this.init();
@@ -34,17 +34,14 @@
             }
             return newobj;
         }, 
-
+        //判断是否ie9及以下版本
         isltIE9 : function(){
-
-            var iev = navigator.appVersion.split(";")[1].replace(/[ ]/g,"");           
-
+            var iev = navigator.appVersion.split(";")[1].replace(/[ ]/g,"");
             if(/MSIE6.0|MSIE7.0|MSIE8.0|MSIE9.0/i.test(iev)){
                 return true
             } else {
                 return false
-            }
-       
+            }       
         },
 
         //获取当前点对象的位置等信息
@@ -59,7 +56,6 @@
         },
         //载入样式
         loadCss : function(){
-
             //获取当前脚本的路径
             var jss = doc.scripts
             , jsPath = jss[jss.length - 1].src
@@ -73,7 +69,6 @@
                 link.id = 'ripplecss';
                 return link;
             }());
-
         },
         //添加事件
         addEvent : function(){
@@ -107,12 +102,10 @@
                     span.addEventListener("animationend",function(){
                         this.parentNode.removeChild(this);
                     },false);
-
                     //插入水波纹节点
                     this.appendChild(span)
 
                 },false);
-
             }
         }
     }
@@ -120,14 +113,12 @@
     Ripple.prototype.init = function(){
         //载入css
         this.loadCss();
-
         var _this = this;
         //初始化
         win.onload = function(){
             _this.elements = doc.querySelectorAll('[data-ripple="ripple"]');
             _this.addEvent();
-        }
-              
+        }              
     }
 
     win.Ripple = Ripple;
