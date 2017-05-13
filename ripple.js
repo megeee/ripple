@@ -2,8 +2,20 @@
     "use strict";
 
     if (typeof Ripple === "undefined" || !Ripple) {
-        var Ripple = function(config){
-            this.init();                     
+
+        var Ripple = function(option){
+            //缺省配置
+            var config = {
+                opacity : 0.5, //水波纹透明度
+                speed : 0.6,   //水波纹扩散速度
+                bgColor : "#ffffff",  //水波纹颜色
+                cursor : true       //是否显示手型指针
+            }
+
+            this.option = this.extend(option,config);
+            //小于ie9版本不给运行
+            if(!this.isltIE9())  this.init();
+
         };
     }
 
@@ -12,6 +24,27 @@
         //创建标签
         createEle : function(tag){
             return doc.createElement(tag);
+        },
+
+        //扩展配置
+        extend : function(obj,config){
+            var newobj = JSON.parse(JSON.stringify(config));
+            for(var i in obj){
+              newobj[i] = obj[i];
+            }
+            return newobj;
+        }, 
+
+        isltIE9 : function(){
+
+            var iev = navigator.appVersion.split(";")[1].replace(/[ ]/g,"");           
+
+            if(/MSIE6.0|MSIE7.0|MSIE8.0|MSIE9.0/i.test(iev)){
+                return true
+            } else {
+                return false
+            }
+       
         },
 
         //获取当前点对象的位置等信息
@@ -49,8 +82,16 @@
             //添加事件
             for(var i = 0; i < this.elements.length; i++){
 
-                this.elements[i].addEventListener("mousedown",function(e){
+                if(typeof _this.option.cursor === "boolean"){
+                    if(_this.option.cursor){
+                        this.elements[i].style.cursor = "pointer";  
+                    }
+                }         
+
+                this.elements[i].addEventListener("mousedown",function(e){       
+                             
                     e.stopPropagation();
+
                     var position = _this.getPosition.call(this,e)
                     , span = doc.createElement("span");
                     span.className = 'ripple';
@@ -58,6 +99,9 @@
                     span.style.left = position.x+"px";
                     span.style.width = position.range+"px";
                     span.style.height = position.range+"px";
+                    span.style.animationDuration = _this.option.speed+"s";
+                    span.style.background = _this.option.bgColor;
+                    span.style.opacity = _this.option.opacity;         
 
                     //动画完成后删除节点
                     span.addEventListener("animationend",function(){

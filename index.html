@@ -47,5 +47,10 @@
 </html>
 <script src="ripple.js"></script>
 <script type="text/javascript">
-    new Ripple()
+    new Ripple({
+        opacity : 0.6,  //水波纹透明度
+        speed : 1,      //水波纹扩散速度
+        bgColor : "#fff", //水波纹颜色
+        cursor : true  //是否显示手型指针
+    })
 </script>
