@@ -36,7 +36,7 @@
         }, 
         //判断是否ie9及以下版本
         isltIE9 : function(){
-            var iev = navigator.appVersion.split(";")[1].replace(/[ ]/g,"");
+            var iev = navigator.userAgent.split(";")[1].replace(/[ ]/g,"");
             if(/MSIE6.0|MSIE7.0|MSIE8.0|MSIE9.0/i.test(iev)){
                 return true
             } else {
